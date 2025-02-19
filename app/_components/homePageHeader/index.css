@@ -1,5 +1,5 @@
 .header {
-  margin-top: 118px;
+  margin: 118px 16px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,7 +39,7 @@
   text-wrap: nowrap;
 }
 
-@media (max-width: 390px) {
+@media (max-width: 426px) {
   .header {
     margin-top: 40px;
   }
