@@ -1,7 +1,7 @@
 import { FC, HTMLAttributes } from "react";
+import clsx from "clsx";
 
 import "./index.css";
-import clsx from "clsx";
 
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   title: string;

@@ -4,7 +4,7 @@ import { useFeatureIsOn } from "@growthbook/growthbook-react";
 import Cookies from "js-cookie";
 
 import { Button } from "@components/index";
-import { Plan, GB_TIMER_COOKIE } from "@models/index";
+import { Plan, GB_TIMER_COOKIE, PLAN_ON_SALE_TIMER_TIME } from "@models/index";
 import { SellClockIcon } from "@public/index";
 import { formatCountdownTime } from "@utils/index";
 
@@ -20,7 +20,7 @@ export const HomePageMain: FC = () => {
     console.log(`${selectedPlan.id}\n${selectedPlan.name}`);
   };
 
-  const [time, setTime] = useState<number>(5 * 1000);
+  const [time, setTime] = useState<number>(PLAN_ON_SALE_TIMER_TIME);
 
   useEffect(() => {
     const cookieTime = Cookies.get(GB_TIMER_COOKIE);

@@ -1,8 +1,9 @@
 import { FC } from "react";
-import { CheckIcon } from "@public/icons";
+import clsx from "clsx";
+
+import { CheckIcon } from "@public/index";
 
 import "./index.css";
-import clsx from "clsx";
 
 interface CheckBoxProps {
   checked: boolean;

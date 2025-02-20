@@ -2,7 +2,7 @@ import { FC } from "react";
 import clsx from "clsx";
 
 import { CheckBox } from "@components/index";
-import { Plan } from "@models/common";
+import { Plan } from "@models/index";
 
 import "./index.css";
 

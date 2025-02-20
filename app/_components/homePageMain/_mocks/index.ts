@@ -1,4 +1,4 @@
-import { Plan } from "@models/common";
+import { Plan } from "@models/index";
 
 export const plansMock: Array<Plan> = [
   {

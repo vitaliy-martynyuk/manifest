@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 import { CheckBox } from "@components/index";
 import { SellClockIcon } from "@public/index";
 import { formatCountdownTime } from "@utils/index";
-import { GB_TIMER_COOKIE, Plan } from "@models/index";
+import { GB_TIMER_COOKIE, PLAN_ON_SALE_TIMER_TIME } from "@models/index";
 
 import { PlanCardProps } from "../planCard";
 import "../planCard/index.css";
@@ -29,7 +29,7 @@ export const PlanCardB: FC<PlanCardBProps> = (props) => {
     description,
   } = props;
 
-  const [time, setTime] = useState<number>(5 * 1000);
+  const [time, setTime] = useState<number>(PLAN_ON_SALE_TIMER_TIME);
 
   useEffect(() => {
     const cookieTime = Cookies.get(GB_TIMER_COOKIE);
@@ -80,7 +80,7 @@ export const PlanCardB: FC<PlanCardBProps> = (props) => {
           <div>{title}</div>
         </div>
         <div className="plan-card__price">
-          {!!oldPrice && (
+          {!!oldPrice && time >= 0 && (
             <div className="plan-card__price-old">${oldPrice}</div>
           )}
           <div className="plan-card__price-new">${newPrice}</div>
