@@ -1,8 +1,8 @@
 .plan-card {
   display: flex;
   justify-content: space-between;
-  background-color: #fff;
-  border: 4px solid #d7f4f3;
+  background-color: var(--white-main);
+  border: 4px solid var(--green-pale);
   border-radius: 16px;
   cursor: pointer;
   position: relative;
@@ -17,8 +17,8 @@
   font-size: 12px;
   padding: 6px 10px;
   border-radius: 28px;
-  background-color: #00b39b;
-  color: #fff;
+  background-color: var(--green-main);
+  color: var(--white-main);
 }
 
 .plan-card__bestPriceLabel {
@@ -26,14 +26,14 @@
   position: absolute;
   right: 30px;
   transform: rotate(5deg) translateY(-90%);
-  background-color: #fece1f;
+  background-color: var(--yellow-main);
   border-radius: 56px;
   padding: 12px 20px;
   font-weight: 600;
 }
 
 .plan-card--active {
-  border-color: #00b39b;
+  border-color: var(--green-main);
 }
 
 .plan-card__title {
@@ -59,18 +59,17 @@
   color: #181b29;
   opacity: 0.8;
   text-decoration: line-through;
-  text-decoration-color: #ff0000;
+  text-decoration-color: var(--red-main);
   text-decoration-thickness: 1px;
 }
 
 .plan-card__price-new {
   font-size: 20px;
   font-weight: 700;
-  color: #3b71f7;
+  color: var(--blue-main);
 }
 
 .plan-card__price-notes {
   font-size: 12px;
-  color: #181b29;
   opacity: 0.8;
 }

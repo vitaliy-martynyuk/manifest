@@ -9,7 +9,7 @@ export const HomePageFooter: FC = () => {
       <div>
         You may cancel by{" "}
         <span className="footer__mail">support@justdone.ai</span>. Our goal is
-        customer satisfaction
+        customer satisfaction.
       </div>
     </footer>
   );

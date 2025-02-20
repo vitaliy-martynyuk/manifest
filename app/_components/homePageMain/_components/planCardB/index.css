@@ -10,12 +10,12 @@
 
 .plan-card-B__timer {
   position: relative;
-  background-color: #252525;
+  background-color: var(--plan-sale-background);
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   font-weight: 600;
   text-transform: uppercase;
-  color: #ffcc8f;
+  color: var(--plan-sale-main);
   padding: 20px 12px 12px;
   display: flex;
   align-items: center;
@@ -33,7 +33,7 @@
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-top: 8px solid #252525;
+  border-top: 8px solid var(--plan-sale-background);
 }
 
 @media (max-width: 426px) {

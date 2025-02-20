@@ -1,9 +1,23 @@
+:root {
+  --plan-sale-main: #ffcc8f;
+  --plan-sale-background: #252525;
+  --font-main: #22293b;
+  --font-pale: #747e97;
+  --background-rectangle: rgba(70, 74, 112, 0.04);
+  --green-main: #00b39b;
+  --green-pale: #d7f4f3;
+  --white-main: #fff;
+  --blue-main: #3b71f7;
+  --yellow-main: #fece1f;
+  --red-main: #ff0000;
+}
+
 html {
   font-family: "Inter", serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  color: #22293b;
+  color: var(--font-main);
 }
 
 .pageWrapper {
@@ -32,15 +46,15 @@ body {
       0deg,
       transparent,
       transparent 55px,
-      rgba(70, 74, 112, 0.04) 55px,
-      rgba(70, 74, 112, 0.04) 56px
+      var(--background-rectangle) 55px,
+      var(--background-rectangle) 56px
     ),
     repeating-linear-gradient(
       90deg,
       transparent,
       transparent 55px,
-      rgba(70, 74, 112, 0.04) 55px,
-      rgba(70, 74, 112, 0.04) 56px
+      var(--background-rectangle) 55px,
+      var(--background-rectangle) 56px
     );
   background-size: 56px 56px;
   background-position: -48px -40px;

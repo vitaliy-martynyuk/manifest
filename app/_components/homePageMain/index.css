@@ -11,8 +11,8 @@
   gap: 10px;
   align-items: center;
   justify-content: center;
-  background-color: #252525;
-  color: #ffcc8f;
+  background-color: var(--plan-sale-background);
+  color: var(--plan-sale-main);
   font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
