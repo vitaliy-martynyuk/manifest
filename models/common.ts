@@ -1,11 +1,9 @@
-export interface Product {
+export interface Plan {
   id: string;
   name: string;
-  regularity: "month" | "year";
-  price: number;
-  currency: "USD";
-  trial_period: number;
-  trial_amount: number;
+  oldPrice: number;
+  newPrice: number;
   note: string;
+  description: string;
   isBestPrice: boolean;
 }

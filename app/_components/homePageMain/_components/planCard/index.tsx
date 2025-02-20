@@ -2,35 +2,31 @@ import { FC } from "react";
 import clsx from "clsx";
 
 import { CheckBox } from "@components/index";
-import { Product } from "@models/common";
+import { Plan } from "@models/common";
 
 import "./index.css";
 
 export interface PlanCardProps {
   className: string;
-  title: Product["name"];
-  oldPrice?: Product["trial_amount"];
-  afterTrialPrice?: Product["trial_period"];
-  newPrice: Product["price"];
-  regularity: Product["regularity"];
+  title: Plan["name"];
+  newPrice: string;
   checked: boolean;
   setChecked: () => void;
-  note?: Product["note"];
-  isBestPrice: Product["isBestPrice"];
+  note?: Plan["note"];
+  isBestPrice: Plan["isBestPrice"];
+  description: Plan["description"];
 }
 
 export const PlanCard: FC<PlanCardProps> = (props) => {
   const {
     className,
     title,
-    oldPrice,
     newPrice,
-    regularity,
-    afterTrialPrice,
     checked,
     setChecked,
     note,
     isBestPrice,
+    description,
   } = props;
 
   return (
@@ -47,13 +43,8 @@ export const PlanCard: FC<PlanCardProps> = (props) => {
         <div>{title}</div>
       </div>
       <div className="plan-card__price">
-        {!!oldPrice && <div className="plan-card__price-old">${oldPrice}</div>}
         <div className="plan-card__price-new">${newPrice}</div>
-        <div className="plan-card__price-notes">
-          {regularity === "month"
-            ? "Per month"
-            : `Then $${afterTrialPrice} per month`}
-        </div>
+        <div className="plan-card__price-notes">{description}</div>
       </div>
     </div>
   );

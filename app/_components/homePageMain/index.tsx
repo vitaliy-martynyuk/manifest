@@ -4,7 +4,7 @@ import { useFeatureIsOn } from "@growthbook/growthbook-react";
 import Cookies from "js-cookie";
 
 import { Button } from "@components/index";
-import { Product, GB_TIMER_COOKIE } from "@models/index";
+import { Plan, GB_TIMER_COOKIE } from "@models/index";
 import { SellClockIcon } from "@public/index";
 import { formatCountdownTime } from "@utils/index";
 
@@ -13,14 +13,14 @@ import { plansMock } from "./_mocks";
 import "./index.css";
 
 export const HomePageMain: FC = () => {
-  const [selectedPlan, setSelectedPlan] = useState<Product>(null);
+  const [selectedPlan, setSelectedPlan] = useState<Plan>(null);
   const enabled = useFeatureIsOn("dev-plan-timer");
 
   const onGetStarted = () => {
     console.log(`${selectedPlan.id}\n${selectedPlan.name}`);
   };
 
-  const [time, setTime] = useState<number>(10 * 1000);
+  const [time, setTime] = useState<number>(5 * 1000);
 
   useEffect(() => {
     const cookieTime = Cookies.get(GB_TIMER_COOKIE);
@@ -30,19 +30,24 @@ export const HomePageMain: FC = () => {
 
     const interval = setInterval(() => {
       setTime((prev) => {
-        if (prev < 0) {
+        const newTime = prev - 1000;
+        if (newTime >= -1000) {
+          Cookies.set(GB_TIMER_COOKIE, newTime.toString());
+        }
+
+        if (prev <= 0) {
           clearInterval(interval);
           return prev;
         }
 
-        const newTime = prev - 1000;
-        Cookies.set(GB_TIMER_COOKIE, newTime.toString());
         return newTime;
       });
     }, 1000);
 
     return () => clearInterval(interval);
   }, []);
+
+  const convertPrice = (price: number) => (price / 100).toFixed(2);
 
   return (
     <main className="main">
@@ -60,28 +65,25 @@ export const HomePageMain: FC = () => {
               key={product.id}
               className="main__plans-item"
               title={product.name}
-              oldPrice={product.trial_amount}
-              newPrice={product.price}
-              afterTrialPrice={product.trial_period}
-              regularity="month"
+              oldPrice={convertPrice(product.oldPrice)}
+              newPrice={convertPrice(product.newPrice)}
               checked={selectedPlan?.id === product.id}
               setChecked={() => setSelectedPlan(product)}
               note={product.note}
               isBestPrice={product.isBestPrice}
+              description={product.description}
             />
           ) : (
             <PlanCard
               key={product.id}
               className="main__plans-item"
               title={product.name}
-              oldPrice={product.trial_amount}
-              newPrice={product.price}
-              afterTrialPrice={product.trial_period}
-              regularity="month"
+              newPrice={convertPrice(product.newPrice)}
               checked={selectedPlan?.id === product.id}
               setChecked={() => setSelectedPlan(product)}
               note={product.note}
               isBestPrice={product.isBestPrice}
+              description={product.description}
             />
           )
         )}

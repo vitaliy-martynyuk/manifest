@@ -1,37 +1,31 @@
-import { Product } from "@models/common";
+import { Plan } from "@models/common";
 
-export const plansMock: Array<Product> = [
+export const plansMock: Array<Plan> = [
   {
     id: "cabbce0d-a5c5-4590-984b-c6995c81744f",
     name: "Unlimited 1-month Plan",
-    regularity: "month",
-    price: 3999,
-    currency: "USD",
-    trial_period: 0,
-    trial_amount: 6999,
+    newPrice: 3999,
+    oldPrice: 6999,
     note: "Most popular",
+    description: "Per month",
     isBestPrice: false,
   },
   {
     id: "cabbce0d-a5c5-4590-984b-c6995c81744e",
     name: "7-day Access",
-    regularity: "year",
-    price: 100,
-    currency: "USD",
-    trial_period: 0,
-    trial_amount: 0,
+    newPrice: 100,
+    oldPrice: 999,
     note: "",
+    description: "Then $29.99 per month",
     isBestPrice: false,
   },
   {
     id: "cabbce0d-a5c5-4590-984b-c6995c81744g",
     name: "Unlimited Annual Plan",
-    regularity: "month",
-    price: 2499,
-    currency: "USD",
-    trial_period: 0,
-    trial_amount: 4900,
+    newPrice: 2499,
+    oldPrice: 4999,
     note: "Save 50%",
+    description: "Per month",
     isBestPrice: true,
   },
 ];
