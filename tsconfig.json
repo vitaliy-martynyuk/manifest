@@ -23,7 +23,8 @@
     "paths": {
       "@public/*": ["public/*"],
       "@components/*": ["components/*"],
-      "@models/*": ["models/*"]
+      "@models/*": ["models/*"],
+      "@helpers/*": ["helpers/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
