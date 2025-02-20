@@ -4,11 +4,13 @@ import { withGrowtbook } from "@helpers/index";
 import { HomePageFooter, HomePageHeader, HomePageMain } from "./_components";
 
 export default function Page() {
-  return withGrowtbook(() => (
+  const App = withGrowtbook(() => (
     <>
       <HomePageHeader />
       <HomePageMain />
       <HomePageFooter />
     </>
   ));
+
+  return <App />;
 }
