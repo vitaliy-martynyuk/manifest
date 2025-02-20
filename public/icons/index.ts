@@ -6,3 +6,4 @@ export * from "./aiDetectorIcon";
 export * from "./summarizerIcon";
 export * from "./chromeExtensionIcon";
 export * from "./checkIcon";
+export * from "./sellClockIcon";

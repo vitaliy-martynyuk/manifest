@@ -2,7 +2,8 @@
 import { useEffect, useMemo } from "react";
 import Cookies from "js-cookie";
 import { GrowthBook, GrowthBookProvider } from "@growthbook/growthbook-react";
-import { GB_UUID_COOKIE } from "@helpers/index";
+
+import { GB_UUID_COOKIE } from "@models/index";
 
 import { HomePageFooter, HomePageHeader, HomePageMain } from "./_components";
 
@@ -12,6 +13,10 @@ export default function Page() {
       new GrowthBook({
         apiHost: process.env.NEXT_PUBLIC_GROWTHBOOK_API_HOST,
         clientKey: process.env.NEXT_PUBLIC_GROWTHBOOK_CLIENT_KEY,
+        enableDevMode: true,
+        trackingCallback: (experiment, result) => {
+          console.log(experiment.name, result.value);
+        },
       }),
     []
   );

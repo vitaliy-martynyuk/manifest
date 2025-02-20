@@ -9,6 +9,7 @@
 }
 
 .plan-card__note {
+  z-index: 10;
   position: absolute;
   left: 44px;
   transform: translateY(-50%);
@@ -21,6 +22,7 @@
 }
 
 .plan-card__bestPriceLabel {
+  z-index: 10;
   position: absolute;
   right: 30px;
   transform: rotate(5deg) translateY(-90%);

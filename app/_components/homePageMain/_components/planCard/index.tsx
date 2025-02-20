@@ -6,7 +6,7 @@ import { Product } from "@models/common";
 
 import "./index.css";
 
-interface PlanCardProps {
+export interface PlanCardProps {
   className: string;
   title: Product["name"];
   oldPrice?: Product["trial_amount"];
