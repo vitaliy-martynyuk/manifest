@@ -1,12 +1,10 @@
 "use client";
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import clsx from "clsx";
-import Cookies from "js-cookie";
 
 import { CheckBox } from "@components/index";
 import { SellClockIcon } from "@public/index";
 import { formatCountdownTime } from "@utils/index";
-import { GB_TIMER_COOKIE, PLAN_ON_SALE_TIMER_TIME } from "@models/index";
 
 import { PlanCardProps } from "../planCard";
 import "../planCard/index.css";
@@ -14,6 +12,7 @@ import "./index.css";
 
 interface PlanCardBProps extends PlanCardProps {
   oldPrice: string;
+  timerRemainingTime: number;
 }
 
 export const PlanCardB: FC<PlanCardBProps> = (props) => {
@@ -27,34 +26,8 @@ export const PlanCardB: FC<PlanCardBProps> = (props) => {
     note,
     isBestPrice,
     description,
+    timerRemainingTime,
   } = props;
-
-  const [time, setTime] = useState<number>(PLAN_ON_SALE_TIMER_TIME);
-
-  useEffect(() => {
-    const cookieTime = Cookies.get(GB_TIMER_COOKIE);
-    if (cookieTime !== undefined) {
-      setTime(parseInt(cookieTime));
-    }
-
-    const interval = setInterval(() => {
-      setTime((prev) => {
-        const newTime = prev - 1000;
-        if (newTime >= -1000) {
-          Cookies.set(GB_TIMER_COOKIE, newTime.toString());
-        }
-
-        if (prev <= 0) {
-          clearInterval(interval);
-          return prev;
-        }
-
-        return newTime;
-      });
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <div
@@ -67,11 +40,11 @@ export const PlanCardB: FC<PlanCardBProps> = (props) => {
       {isBestPrice && (
         <div className="plan-card__bestPriceLabel">🚀Best value</div>
       )}
-      {time >= 0 && (
+      {timerRemainingTime >= 0 && (
         <div className="plan-card-B__timer">
           <SellClockIcon />
           <div>Sale ends in</div>
-          <div>{formatCountdownTime(time)}</div>
+          <div>{formatCountdownTime(timerRemainingTime)}</div>
         </div>
       )}
       <div className="plan-card-B__content">
@@ -80,7 +53,7 @@ export const PlanCardB: FC<PlanCardBProps> = (props) => {
           <div>{title}</div>
         </div>
         <div className="plan-card__price">
-          {!!oldPrice && time >= 0 && (
+          {!!oldPrice && timerRemainingTime >= 0 && (
             <div className="plan-card__price-old">${oldPrice}</div>
           )}
           <div className="plan-card__price-new">${newPrice}</div>

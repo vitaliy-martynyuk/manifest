@@ -23,7 +23,7 @@ export const HomePageMain: FC = () => {
   const [time, setTime] = useState<number>(PLAN_ON_SALE_TIMER_TIME);
 
   const onGetStarted = () => {
-    console.log(`${selectedPlan.id}\n${selectedPlan.name}`);
+    console.log({ id: selectedPlan.id, name: selectedPlan.name });
   };
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export const HomePageMain: FC = () => {
     }, 1000);
 
     return () => interval && clearInterval(interval);
-  }, []);
+  }, [enabled]);
 
   const convertPrice = (price: number) => (price / 100).toFixed(2);
 
@@ -80,6 +80,7 @@ export const HomePageMain: FC = () => {
               note={product.note}
               isBestPrice={product.isBestPrice}
               description={product.description}
+              timerRemainingTime={time}
             />
           ) : (
             <PlanCard
