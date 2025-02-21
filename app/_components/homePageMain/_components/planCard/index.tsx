@@ -39,7 +39,7 @@ export const PlanCard: FC<PlanCardProps> = (props) => {
         <div className="plan-card__bestPriceLabel">🚀Best value</div>
       )}
       <div className="plan-card__title">
-        <CheckBox checked={checked} onChange={() => {}} />
+        <CheckBox checked={checked} />
         <div>{title}</div>
       </div>
       <div className="plan-card__price">

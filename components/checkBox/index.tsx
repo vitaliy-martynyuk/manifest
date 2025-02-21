@@ -7,7 +7,7 @@ import "./index.css";
 
 interface CheckBoxProps {
   checked: boolean;
-  onChange: (checked: boolean) => void;
+  onChange?: (_c: boolean) => void;
 }
 
 export const CheckBox: FC<CheckBoxProps> = ({ checked, onChange }) => {

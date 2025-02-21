@@ -24,7 +24,8 @@
       "@public/*": ["public/*"],
       "@components/*": ["components/*"],
       "@models/*": ["models/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@helpers/*": ["helpers/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

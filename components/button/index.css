@@ -1,6 +1,10 @@
 .button {
-  background: linear-gradient(90deg, #00b39b 0%, #3b71f7 100%);
-  color: #fff;
+  background: linear-gradient(
+    90deg,
+    var(--green-main) 0%,
+    var(--blue-main) 100%
+  );
+  color: var(--white-main);
   cursor: pointer;
 }
 

@@ -4,7 +4,12 @@ import { useFeatureIsOn } from "@growthbook/growthbook-react";
 import Cookies from "js-cookie";
 
 import { Button } from "@components/index";
-import { Plan, GB_TIMER_COOKIE, PLAN_ON_SALE_TIMER_TIME } from "@models/index";
+import {
+  Plan,
+  GB_TIMER_COOKIE,
+  PLAN_ON_SALE_TIMER_TIME,
+  GB_PLAN_ON_SALE_FEATURE_KEY,
+} from "@models/index";
 import { SellClockIcon } from "@public/index";
 import { formatCountdownTime } from "@utils/index";
 
@@ -14,15 +19,20 @@ import "./index.css";
 
 export const HomePageMain: FC = () => {
   const [selectedPlan, setSelectedPlan] = useState<Plan>(null);
-  const enabled = useFeatureIsOn("dev-plan-timer");
-
-  const onGetStarted = () => {
-    console.log(`${selectedPlan.id}\n${selectedPlan.name}`);
-  };
-
+  const enabled = useFeatureIsOn(GB_PLAN_ON_SALE_FEATURE_KEY);
   const [time, setTime] = useState<number>(PLAN_ON_SALE_TIMER_TIME);
 
+  const onGetStarted = () => {
+    console.log({ id: selectedPlan.id, name: selectedPlan.name });
+  };
+
+  const convertPrice = (price: number) => (price / 100).toFixed(2);
+
   useEffect(() => {
+    if (!enabled) {
+      return;
+    }
+
     const cookieTime = Cookies.get(GB_TIMER_COOKIE);
     if (cookieTime !== undefined) {
       setTime(parseInt(cookieTime));
@@ -44,10 +54,8 @@ export const HomePageMain: FC = () => {
       });
     }, 1000);
 
-    return () => clearInterval(interval);
-  }, []);
-
-  const convertPrice = (price: number) => (price / 100).toFixed(2);
+    return () => interval && clearInterval(interval);
+  }, [enabled]);
 
   return (
     <main className="main">
@@ -72,6 +80,7 @@ export const HomePageMain: FC = () => {
               note={product.note}
               isBestPrice={product.isBestPrice}
               description={product.description}
+              timerRemainingTime={time}
             />
           ) : (
             <PlanCard
