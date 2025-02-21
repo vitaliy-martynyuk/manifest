@@ -49,7 +49,7 @@ export const PlanCardB: FC<PlanCardBProps> = (props) => {
       )}
       <div className="plan-card-B__content">
         <div className="plan-card__title">
-          <CheckBox checked={checked} onChange={() => {}} />
+          <CheckBox checked={checked} />
           <div>{title}</div>
         </div>
         <div className="plan-card__price">

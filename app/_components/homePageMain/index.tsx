@@ -26,6 +26,8 @@ export const HomePageMain: FC = () => {
     console.log({ id: selectedPlan.id, name: selectedPlan.name });
   };
 
+  const convertPrice = (price: number) => (price / 100).toFixed(2);
+
   useEffect(() => {
     if (!enabled) {
       return;
@@ -54,8 +56,6 @@ export const HomePageMain: FC = () => {
 
     return () => interval && clearInterval(interval);
   }, [enabled]);
-
-  const convertPrice = (price: number) => (price / 100).toFixed(2);
 
   return (
     <main className="main">
